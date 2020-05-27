@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>R&M</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <Card_character v-for="character in characters" :key="character.id" :name="character.name" :img="character.image"></Card_character>
+        </div>
+    </div>
+    <script>
+
+        Vue.component('Card_character', {
+            template: `
+            <template>
+            <div id="card">
+                <div>
+                    <img :src="image">
+                </div>
+                <h4>{{ name }}</h4>
+            </div>
+        </template>
+            `,
+            props: ["name", "image"]
+            })
+
+        const app = new Vue({
+            el: '#app',
+            data: { 
+                characters: [
+                    {
+                        name: "Rick Sánchez",
+                        image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+                    },
+
+                    {
+                        name: "Morty Smith",
+                        image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+                    },
+
+                    {
+                        name: "Summer Smith",
+                        image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg"
+                    },
+
+                    {
+                        name: "Beth Smith",
+                        image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
+                    },
+
+                    {
+                        name: "Jerry Smith",
+                        image: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+                    }
+                ]
+
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
+
+<style>
+    body{
+        background: url(https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png);
+        color: green;
+    }
+
+    img{
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    #card{
+        display: flex;
+        align-items: center;
+    }
+</style>
