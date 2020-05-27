@@ -2,59 +2,62 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>R&M</title>
-    <script src="https://unpkg.com/vue"></script>
 </head>
 
 <body>
-    <div id="app">
-        <div>
-            <Card_character v-for="character in characters" :key="character.id" :name="character.name" :img="character.image"></Card_character>
-        </div>
-    </div>
-    <script>
 
+    <div id="app">
+        <Card_character v-for="(character, index) in characters" :key="index" :name="character.name" :img="character.img"></Card_character>
+    </div>
+
+</body>
+
+</html>
+
+    <script>
         Vue.component('Card_character', {
             template: `
-            <template>
+        
             <div id="card">
                 <div>
-                    <img :src="image">
+                    <img :src="img" alt="">
                 </div>
                 <h4>{{ name }}</h4>
             </div>
-        </template>
             `,
-            props: ["name", "image"]
-            })
+            props: ["name", "img"]
+        })
 
         const app = new Vue({
             el: '#app',
-            data: { 
-                characters: [
-                    {
+            data: {
+                characters: [{
                         name: "Rick Sánchez",
-                        image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+                        img: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
                     },
 
                     {
                         name: "Morty Smith",
-                        image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+                        img: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
                     },
 
                     {
                         name: "Summer Smith",
-                        image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg"
+                        img: "https://rickandmortyapi.com/api/character/avatar/3.jpeg"
                     },
 
                     {
                         name: "Beth Smith",
-                        image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
+                        img: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
                     },
 
                     {
                         name: "Jerry Smith",
-                        image: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+                        img: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
                     }
                 ]
 
@@ -65,23 +68,25 @@
             }
         })
     </script>
-</body>
 
-</html>
 
 <style>
-    body{
+    body {
         background: url(https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png);
         color: green;
     }
 
-    img{
-        width: 100%;
+    img {
         border-radius: 50%;
+        width: 100%;
     }
 
-    #card{
+    #card {
         display: flex;
         align-items: center;
+    }
+
+    #card >div {
+      width: 15%;  
     }
 </style>
